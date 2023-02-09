@@ -38,7 +38,6 @@ function ChatScreen({ chat, messages }) {
         })
     }
     function showMessages() {
-        scrollToBottom();
         if (messagesSnapshot) {
             return messagesSnapshot.docs.map(message => (
                 <Message key={message.id} user={message.data().user} message={
