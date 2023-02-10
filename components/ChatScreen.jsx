@@ -142,7 +142,7 @@ flex: 1;
     }
 `;
 const EndOfMessage = styled.div`
-margin-bottom: 50px;`;
+margin-bottom: 10px;`;
 const MessageContainer = styled.div`
     padding: 30px;
     background-color: #e5ded8;
