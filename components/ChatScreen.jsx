@@ -74,7 +74,7 @@ function ChatScreen({ chat, messages }) {
         <Container>
             <Header>
                 {recipient ? (
-                    <Avatar src={recipient.photoURL} />
+                    <Avatar src={recipient?.photoUrl} />
                 ) : (
                     <Avatar>{recipientEmail[0].toUpperCase()}</Avatar>
                 )}
