@@ -8,7 +8,7 @@ export default function Home() {
       <Head>
         <title>Whatsapp</title>
         <meta name="description" content="Whatsapp clone" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Container>
       <Sidebar/>
