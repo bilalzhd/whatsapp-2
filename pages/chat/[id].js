@@ -6,9 +6,19 @@ import { db } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import getRecipientEmail from "../../utils/getRecipientEmail";
 import { auth } from "../../firebase";
+import Link from "next/link";
+import { Button } from "@mui/material";
 
 function Chat({ messages, chat }) {
     const [ user ] = useAuthState(auth);
+    if(!chat.users.includes(user.email)){
+        return (<Container>
+        <p>You are in the wrong chat accidentally.</p>
+            <Link href="/"><Button>Go Back</Button></Link>
+            </Container>
+        )
+
+    }
     return (
         <Container>
             <Head>

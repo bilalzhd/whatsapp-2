@@ -5,6 +5,8 @@ import Login from './login';
 import Loading from '../components/Loading';
 import { useEffect } from 'react';
 import firebase from 'firebase';
+import Head from 'next/head';
+import styled from 'styled-components';
 
 function MyApp({ Component, pageProps }) {
   const [ user, loading ] = useAuthState(auth);
@@ -24,7 +26,14 @@ function MyApp({ Component, pageProps }) {
   if(loading) return <Loading />
   if(!user) return <Login />
 
-  return <Component {...pageProps} />
+  return (<Container>
+    <Head>
+      <meta name='description' content='a whatsapp kind of clone built using next js with server side rendering and incremental site regeneration' />
+    </Head>
+    <Component {...pageProps} />
+  </Container>)
 }
 
-export default MyApp
+export default MyApp;
+const Container = styled.div`
+max-height: 100vh;1`
