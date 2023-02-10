@@ -32,13 +32,14 @@ function ChatScreen({ chat, messages }) {
         onError: (error) => console.error(error)
     })
     function scrollToBottom() {
-        endOfMessageRef.current.scrollIntoView({
+        endOfMessageRef?.current?.scrollIntoView({
             behaviour: "smooth",
             block: "start"
         })
     }
     function showMessages() {
         if (messagesSnapshot) {
+            scrollToBottom();
             return messagesSnapshot.docs.map(message => (
                 <Message key={message.id} user={message.data().user} message={
                     { ...message.data(), timestamp: message.data().timestamp?.toDate().getTime() }
@@ -46,6 +47,7 @@ function ChatScreen({ chat, messages }) {
             ))
         }
         else {
+            scrollToBottom();
             return JSON.parse(messages).map(message => (<Message key={message.id} user={message.user} message={message} />))
         }
     }
@@ -77,7 +79,7 @@ function ChatScreen({ chat, messages }) {
                     <Avatar>{recipientEmail[0].toUpperCase()}</Avatar>
                 )}
                 <HeaderInformation>
-                    <h3>{recipientEmail}</h3>
+                    <h3>{recipientEmail.substring(0, recipientEmail.indexOf("@"))}</h3>
                     {(recipient?.lastSeen) ? (
                         <p>Last active:&nbsp;
                             {recipient?.lastSeen?.toDate() && (
@@ -166,4 +168,8 @@ const Input = styled.input`
     margin-left: 15px;
     margin-right: 15px;
 `;
-const HeaderIcons = styled.div``;
+const HeaderIcons = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`;
